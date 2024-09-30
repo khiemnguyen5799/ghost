@@ -1,0 +1,31 @@
+version: "3.1"
+
+services:
+  ghost:
+    image: ghost:5-alpine
+    restart: always
+    ports:
+      - 8080:2368   # 🔥 Update this line to refect remote URL
+    environment:
+      # Cấu hình cơ sở dữ liệu
+      database__client: mysql
+      database__connection__host: db
+      database__connection__user: root
+      database__connection__password: G>:cUm"0a£MWAW47
+      database__connection__database: xemaypho_db
+      url: http://localhost:8080    # 🔥 Update this line to refect remote URL
+    volumes:
+      - ghost:/var/lib/ghost/content
+  db:
+    image: mysql:8.0
+    restart: always
+    ports:
+      - 3310:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: G>:cUm"0a£MWAW47
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  ghost:
+  db:
